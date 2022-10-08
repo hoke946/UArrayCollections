@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: main
-    paths: Packages/com.vrchat.demo-template/**
+    paths: Packages/com.t-hoke.arraycollections/**
 
 env:
   packageName: "com.t-hoke.arraycollections"

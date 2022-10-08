@@ -7,7 +7,7 @@ on:
     paths: Packages/com.vrchat.demo-template/**
 
 env:
-  packageName: "com.vrchat.demo-template"
+  packageName: "com.t-hoke.arraycollections"
 
 jobs:
   build:

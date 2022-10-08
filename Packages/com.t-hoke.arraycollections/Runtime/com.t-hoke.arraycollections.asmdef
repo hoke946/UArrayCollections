@@ -1,9 +1,11 @@
 {
-    "name": "VRChatPackageTemplate.Editor",
-    "references": [],
-    "includePlatforms": [
-        "Editor"
+    "name": "com.t-hoke.arraycollections",
+    "references": [
+        "VRC.SDK3",
+        "VRC.SDKBase",
+        "UdonSharp.Runtime"
     ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

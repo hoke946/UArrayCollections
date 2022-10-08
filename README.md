@@ -1,6 +1,6 @@
 # Array Collections
 
-UdonSharpでは現状(ver1.1.1時点)で実装されていない、ListやDictionaryなどのコレクションのような操作（一部を除く）を、通常の配列変数で実行するUdonSharpのユーティリティクラスです。  
+UdonSharpでは現状(ver1.1.1時点)で実装されていない、ListやDictionaryなどのコレクションのような操作を、通常の配列変数で実現するUdonSharpのユーティリティクラスです。  
 ListやDictionaryの他に、QueueやStackも用意しています。  
   
 ## 使用条件
@@ -11,8 +11,8 @@ UdonSharp v1.1.1 以降
 
 - `using ArrayCollections` を宣言します。
 - 配列変数を定義します。
-- 配列変数をref引数とし、`UList` `UDict` `UQueue` `UStack`の目的の用途のInitializeメソッドを呼び出します。（配列の初期化）
-- 配列変数をref引数とし、各機能のメソッドを実行します。（各機能の詳細は[こちら](https://github.com/hoke946/ArrayCollections/blob/main/Packages/com.t-hoke.arraycollections/README.md)）
+- 配列変数を引数とし、Initializeメソッドを呼び出します。（配列の初期化）
+- 配列変数を引数とし、各機能のメソッドを実行します。（メソッド詳細は[こちら](https://github.com/hoke946/ArrayCollections/blob/main/Packages/com.t-hoke.arraycollections/Methods.md)）
   
 ```
 using UdonSharp;
@@ -38,16 +38,18 @@ Dictionaryの場合、`Key`と`Value`のために2つの配列変数を使用し
 
     void AnyAction()
     {
-        UDict.Initialize(ref keys,ref values);
+        UDict.Initialize(ref keys, ref values);
         UDict.Add(ref keys, ref values, "k1", "abc");
+        UDict.Add(ref keys, ref values, "k2", "def");
+        string k1val = UDict.GetValue(keys, values, "k1");  // k1val = "abc"
     }
 ```
 
 ## 注意
 
-おそらく、処理効率はそれほど優れていません。  
-特に要素数が多くなるに従い、重くなる傾向にあります。  
-（処理は一般的な配列コピーやループ検索が主です。）
+処理は一般的な配列コピーやループ検索が主です。
+処理効率は特別に優れているわけではありません。  
+特に配列の要素数が多くなるに従い、重くなる傾向にあります。
 
 ## ライセンス
 

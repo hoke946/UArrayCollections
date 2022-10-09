@@ -1,5 +1,5 @@
 {
-    "name": "com.t-hoke.arraycollections",
+    "name": "com.t-hoke.uarraycollections",
     "references": [
         "VRC.SDK3",
         "VRC.SDKBase",

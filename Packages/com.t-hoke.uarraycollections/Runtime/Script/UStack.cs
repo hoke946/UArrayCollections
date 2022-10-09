@@ -2,7 +2,7 @@
 using UdonSharp;
 using UnityEngine;
 
-namespace ArrayCollections
+namespace UArrayCollections
 {
     public class UStack : UdonSharpBehaviour
     {

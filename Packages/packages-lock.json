@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.t-hoke.arraycollections": {
-      "version": "file:com.t-hoke.arraycollections",
+    "com.t-hoke.uarraycollections": {
+      "version": "file:com.t-hoke.uarraycollections",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

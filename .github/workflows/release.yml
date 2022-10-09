@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
   push:
     branches: main
-    paths: Packages/com.t-hoke.arraycollections/**
+    paths: Packages/com.t-hoke.uarraycollections/**
 
 env:
-  packageName: "com.t-hoke.arraycollections"
+  packageName: "com.t-hoke.uarraycollections"
 
 jobs:
   build:

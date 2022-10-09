@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: UDict
+  m_Name: UStack
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: a6b9726cae4899b42ace78a401711e72,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: e1d28b12406923646a76c333bb70e7e6,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 8fb99aef108e874439e5f550e6062248, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 683fca90d3d414849a814f2cf57a372d, type: 3}
   scriptVersion: 2
   compiledVersion: 2
   behaviourSyncMode: 0
   hasInteractEvent: 0
-  scriptID: 3390688984201161124
+  scriptID: -3425555459561325511
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 

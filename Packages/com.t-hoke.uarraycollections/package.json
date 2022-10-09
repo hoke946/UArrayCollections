@@ -1,6 +1,6 @@
 {
-  "name": "com.t-hoke.arraycollections",
-  "displayName": "ArrayCollections",
+  "name": "com.t-hoke.uarraycollections",
+  "displayName": "UArrayCollections",
   "version": "0.0.1",
   "unity": "2019.4",
   "description": "Utility classes that can operate UdonSharp array variables like List or Dictionary",

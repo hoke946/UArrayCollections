@@ -57,7 +57,7 @@ Listの機能を提供するクラスです。
 ### int UList.LastIndexOf<T>(T[] `array`, T `value`, int `start`)
 配列`array`を`start`の位置から後方検索し、`value`に一致する最初の要素のインデックス番号を返す。一致する要素がない場合は-1を返す。
 
-### bool UList.Contains<T>(T[] array, T value)
+### bool UList.Contains<T>(T[] `array`, T `value`)
 配列`array`に`value`の要素を含んでいれば`true`、含んでいなければ`false`を返す。
 
 ### T[] GetRange<T>(T[] `array`, int `index`, int `count`)
@@ -68,8 +68,8 @@ Listの機能を提供するクラスです。
 
 # UDict 
 Dictionaryの機能を提供するクラスです。  
-引数の`key`と`value`にはDictionaryとして運用する配列変数を設定してください。  
-`key`と`value`は同じインデックス番号で対となり、要素数は必ず一致させる必要があります。  
+引数の`keyArray`と`valueArray`にはDictionaryとして運用する配列変数を設定してください。  
+`keyArray`と`valueArray`は同じインデックス番号で対となり、要素数は必ず一致させる必要があります。  
 
 ## 操作メソッド
 

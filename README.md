@@ -7,6 +7,11 @@ ListやDictionaryの他に、QueueやStackも用意しています。
 
 UdonSharp v1.1.1 以降
 
+## ダウンロード
+  
+[Releasesページ](https://github.com/hoke946/UArrayCollections/releases)、または、[こちらのページ](https://hoke946.github.io/UArrayCollections/)から
+zipファイル、またはUnityPackageをダウンロードしてください。 
+
 ## 使用方法
 
 - `using UArrayCollections` を宣言します。

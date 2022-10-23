@@ -32,7 +32,7 @@ namespace UArrayCollections
 
         public static void Insert<T>(ref T[] array, int index, T value)
         {
-            Debug.Assert((index < 0 || index > array.Length), $"'index' is out of range.");
+            Debug.Assert(index >= 0 && index < array.Length, $"'index' is out of range.");
             T[] new_array = new T[array.Length + 1];
             int nidx = 0;
             Array.Copy(array, 0, new_array, nidx, index);
@@ -45,7 +45,7 @@ namespace UArrayCollections
 
         public static void InsertRange<T>(ref T[] array, int index, T[] values)
         {
-            Debug.Assert((index < 0 || index > array.Length), $"'index' is out of range.");
+            Debug.Assert(index >= 0 && index < array.Length, $"'index' is out of range.");
             T[] new_array = new T[array.Length + values.Length];
             int nidx = 0;
             Array.Copy(array, 0, new_array, nidx, index);
@@ -58,7 +58,7 @@ namespace UArrayCollections
 
         public static void RemoveAt<T>(ref T[] array, int index)
         {
-            Debug.Assert((index < 0 || index >= array.Length), $"'index' is out of range.");
+            Debug.Assert(index >= 0 && index < array.Length, $"'index' is out of range.");
             T[] new_array = new T[array.Length - 1];
             int nidx = 0;
             Array.Copy(array, 0, new_array, nidx, index);
@@ -85,8 +85,8 @@ namespace UArrayCollections
 
         public static void RemoveRange<T>(ref T[] array, int index, int count)
         {
-            Debug.Assert((index < 0 || index >= array.Length), $"'index' is out of range.");
-            Debug.Assert((count < 0), $"count is out of range.");
+            Debug.Assert(index >= 0 && index < array.Length, $"'index' is out of range.");
+            Debug.Assert(count >= 0, $"count is out of range.");
             if (index + count >= array.Length) { count = array.Length - index; }
             if (count == 0) { return; }
             T[] new_array = new T[array.Length - count];
@@ -99,7 +99,7 @@ namespace UArrayCollections
 
         public static void Resize<T>(ref T[] array, int length)
         {
-            Debug.Assert((length < 0), $"'length' is out of range.");
+            Debug.Assert(length >= 0, $"'length' is out of range.");
             T[] new_array = new T[length];
             int len = array.Length > length ? length : array.Length;
             Array.Copy(array, 0, new_array, 0, len);
@@ -159,8 +159,8 @@ namespace UArrayCollections
 
         public static T[] GetRange<T>(T[] array, int index, int count)
         {
-            Debug.Assert((index < 0 || index >= array.Length), $"'index' is out of range.");
-            Debug.Assert((count < 0), $"count is out of range.");
+            Debug.Assert(index >= 0 && index < array.Length, $"'index' is out of range.");
+            Debug.Assert(count >= 0, $"count is out of range.");
             if (index + count >= array.Length) { count = array.Length - index; }
             T[] new_array = new T[count];
             Array.Copy(array, index, new_array, 0, count);

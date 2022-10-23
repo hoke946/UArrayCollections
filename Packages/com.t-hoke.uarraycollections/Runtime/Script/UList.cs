@@ -23,10 +23,8 @@ namespace UArrayCollections
         public static void AddRange<T>(ref T[] array, T[] values)
         {
             T[] new_array = new T[array.Length + values.Length];
-            int nidx = 0;
-            Array.Copy(array, 0, new_array, nidx, array.Length);
-            nidx += array.Length;
-            Array.Copy(values, 0, array, nidx, values.Length);
+            Array.Copy(array, 0, new_array, 0, array.Length);
+            Array.Copy(values, 0, new_array, array.Length, values.Length);
             array = new_array;
         }
 
@@ -34,25 +32,24 @@ namespace UArrayCollections
         {
             Debug.Assert((index < 0 || index > array.Length), $"'index' is out of range.");
             T[] new_array = new T[array.Length + 1];
-            int nidx = 0;
-            Array.Copy(array, 0, new_array, nidx, index);
-            nidx += index;
-            new_array[nidx] = value;
-            nidx++;
-            Array.Copy(array, index, new_array, nidx, array.Length - index);
+            Array.Copy(array, 0, new_array, 0, index);
+            new_array[index] = value;
+            Array.Copy(array, index, new_array, index + 1, array.Length - index);
             array = new_array;
         }
 
         public static void InsertRange<T>(ref T[] array, int index, T[] values)
         {
             Debug.Assert((index < 0 || index > array.Length), $"'index' is out of range.");
+            if (values.Length == 0)
+            {
+                return;
+            }
+
             T[] new_array = new T[array.Length + values.Length];
-            int nidx = 0;
-            Array.Copy(array, 0, new_array, nidx, index);
-            nidx += index;
-            Array.Copy(values, 0, array, nidx, values.Length);
-            nidx += values.Length;
-            Array.Copy(array, index, new_array, nidx, array.Length - index);
+            Array.Copy(array, 0, new_array, 0, index);
+            Array.Copy(values, 0, array, index, values.Length);
+            Array.Copy(array, index, new_array, index + values.Length, array.Length - index);
             array = new_array;
         }
 
@@ -60,10 +57,8 @@ namespace UArrayCollections
         {
             Debug.Assert((index < 0 || index >= array.Length), $"'index' is out of range.");
             T[] new_array = new T[array.Length - 1];
-            int nidx = 0;
-            Array.Copy(array, 0, new_array, nidx, index);
-            nidx += index;
-            Array.Copy(array, index + 1, new_array, nidx, array.Length - index - 1);
+            Array.Copy(array, 0, new_array, 0, index);
+            Array.Copy(array, index + 1, new_array, index, array.Length - index - 1);
             array = new_array;
         }
 
@@ -76,92 +71,82 @@ namespace UArrayCollections
 
         public static void RemoveAll<T>(ref T[] array, T value)
         {
-            while (true)
+            int length = array.Length;
+            int currentIndex = 0;
+            for (int i = 0; i < length; i++)
             {
-                int index = IndexOf(array, value);
-                if (index == -1) { return; }
+                array[currentIndex] = array[i];
+                if (!array[i].Equals(value))
+                {
+                    currentIndex++;
+                }
             }
+            Resize(ref array, currentIndex);
         }
 
         public static void RemoveRange<T>(ref T[] array, int index, int count)
         {
             Debug.Assert((index < 0 || index >= array.Length), $"'index' is out of range.");
             Debug.Assert((count < 0), $"count is out of range.");
-            if (index + count >= array.Length) { count = array.Length - index; }
+            
+            count = Mathf.Min(count, array.Length - index);
             if (count == 0) { return; }
+
             T[] new_array = new T[array.Length - count];
-            int nidx = 0;
-            Array.Copy(array, 0, new_array, nidx, index);
-            nidx += index;
-            Array.Copy(array, index + count, new_array, nidx, array.Length - index - count);
+            Array.Copy(array, 0, new_array, 0, index);
+            Array.Copy(array, index + count, new_array, index, array.Length - index - count);
             array = new_array;
         }
 
         public static void Resize<T>(ref T[] array, int length)
         {
             Debug.Assert((length < 0), $"'length' is out of range.");
+            if (array.Length == length)
+            {
+                return;
+            }
             T[] new_array = new T[length];
-            int len = array.Length > length ? length : array.Length;
-            Array.Copy(array, 0, new_array, 0, len);
+            Array.Copy(array, 0, new_array, 0, Mathf.Min(array.Length, length));
             array = new_array;
         }
 
         public static void Reverse<T>(ref T[] array)
         {
-            T[] new_array = new T[array.Length];
-            int nidx = 0;
-            for (int i = array.Length - 1; i > -1; i--)
-            {
-                new_array[nidx] = array[i];
-                nidx++;
-            }
-            array = new_array;
+            Array.Reverse(array);
         }
 
         public static int IndexOf<T>(T[] array, T value)
         {
-            return IndexOf(array, value, 0);
+            return Array.IndexOf(array, value);
         }
 
         public static int IndexOf<T>(T[] array, T value, int start)
         {
-            for (int i = start; i < array.Length; i++)
-            {
-                if (array[i].Equals(value))
-                {
-                    return i;
-                }
-            }
-            return -1;
+            return Array.IndexOf(array, value, start);
         }
 
         public static int LastIndexOf<T>(T[] array, T value)
         {
-            return LastIndexOf(array, value, array.Length - 1);
+            return Array.LastIndexOf(array, value);
         }
 
         public static int LastIndexOf<T>(T[] array, T value, int start)
         {
-            for (int i = start; i > -1; i--)
-            {
-                if (array[i].Equals(value))
-                {
-                    return i;
-                }
-            }
-            return -1;
+            return Array.LastIndexOf(array, value, start);
         }
 
         public static bool Contains<T>(T[] array, T value)
         {
-            return IndexOf(array, value, 0) != -1;
+            return Array.IndexOf(array, value) != -1;
         }
 
         public static T[] GetRange<T>(T[] array, int index, int count)
         {
             Debug.Assert((index < 0 || index >= array.Length), $"'index' is out of range.");
             Debug.Assert((count < 0), $"count is out of range.");
-            if (index + count >= array.Length) { count = array.Length - index; }
+
+            count = Mathf.Min(count, array.Length - index);
+
             T[] new_array = new T[count];
             Array.Copy(array, index, new_array, 0, count);
             return new_array;

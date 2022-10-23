@@ -14,7 +14,7 @@ namespace UArrayCollections
 
         public static void Add<TKey, TValue>(ref TKey[] keyArray, ref TValue[] valueArray, TKey key, TValue value)
         {
-            Debug.Assert((keyArray.Length != valueArray.Length), $"the number of elements in both arrays do not match.");
+            Debug.Assert(keyArray.Length == valueArray.Length, $"the number of elements in both arrays do not match.");
             if (UList.Contains(keyArray, key))
             {
                 Debug.LogWarning($"key '{key}' is already in the keyArray");
@@ -26,7 +26,7 @@ namespace UArrayCollections
 
         public static void Remove<TKey, TValue>(ref TKey[] keyArray, ref TValue[] valueArray, TKey key)
         {
-            Debug.Assert((keyArray.Length != valueArray.Length), $"the number of elements in both arrays do not match.");
+            Debug.Assert(keyArray.Length == valueArray.Length, $"the number of elements in both arrays do not match.");
             var index = UList.IndexOf(keyArray, key);
             if (index < 0) { return; }
             UList.RemoveAt(ref keyArray, index);

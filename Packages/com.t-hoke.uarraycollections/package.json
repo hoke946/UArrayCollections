@@ -1,15 +1,18 @@
 {
   "name": "com.t-hoke.uarraycollections",
   "displayName": "UArrayCollections",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "unity": "2019.4",
   "description": "Utility classes that can operate UdonSharp array variables like List or Dictionary",
+  "url" : "https://github.com/hoke946/UArrayCollections/",
+  "licensesUrl": "https://github.com/hoke946/UArrayCollections/blob/main/Packages/com.t-hoke.uarraycollections/LICENSE",
   "author": {
     "name": "Hoke"
   },
   "gitDependencies": {},
   "vpmDependencies": {
-    "com.vrchat.udonsharp": "1.1.1"
+    "com.vrchat.base" : "3.1.x",
+    "com.vrchat.udonsharp": "1.1.x"
   },
   "legacyFolders": {},
   "legacyFiles": {}
